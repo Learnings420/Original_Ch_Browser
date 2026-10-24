@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+PROFILE_DIR="/config/chrome-profile"
+mkdir -p "$PROFILE_DIR"
+
+exec google-chrome \
+    --no-sandbox \
+    --disable-dev-shm-usage \
+    --user-data-dir="$PROFILE_DIR" \
+    --no-first-run \
+    --no-default-browser-check \
+    --start-maximized \
+    --disable-infobars \
+    about:blank
