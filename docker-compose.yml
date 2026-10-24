@@ -1,12 +1,15 @@
 services:
-  chrome:
-    build: .
-    container_name: my-google-chrome
+  chrome-novnc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: chrome-novnc
     network_mode: host
     shm_size: "1gb"
+    env_file:
+      - .env
     environment:
-      VNC_USER: "${VNC_USER}"
-      VNC_PASSWORD: "${VNC_PASSWORD}"
+      DISPLAY: ":0"
     volumes:
       - /tmp/chromium-config:/config
     restart: unless-stopped
