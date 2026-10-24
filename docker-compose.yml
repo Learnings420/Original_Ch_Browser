@@ -1,0 +1,12 @@
+services:
+  chrome:
+    build: .
+    container_name: my-google-chrome
+    network_mode: host
+    shm_size: "1gb"
+    environment:
+      VNC_USER: "${VNC_USER}"
+      VNC_PASSWORD: "${VNC_PASSWORD}"
+    volumes:
+      - /tmp/chromium-config:/config
+    restart: unless-stopped
